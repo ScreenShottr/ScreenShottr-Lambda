@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports.uploadFile = (event, context, callback) => {
+module.exports.processUpload = (event, context, callback) => {
   console.log(event)
   const response = {
     statusCode: 200,
