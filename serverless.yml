@@ -37,20 +37,20 @@ functions:
 
 resources:
  Resources:
-   storageBucket:
-     Type: AWS::S3::Bucket
-     Properties:
-       BucketName: screenshottr-service-images-saved
-  entriesDynamo:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: screenshottr-service-uploads
-      AttributeDefinitions:
-        - AttributeName: image_id
-          AttributeType: S
-      KeySchema:
-        - AttributeName: image_id
-          KeyType: HASH
-      ProvisionedThroughput:
-        ReadCapacityUnits: 5
-        WriteCapacityUnits: 5
+    storageBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: screenshottr-service-images-saved
+    entriesDynamo:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: screenshottr-service-uploads
+        AttributeDefinitions:
+          - AttributeName: image_id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: image_id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
