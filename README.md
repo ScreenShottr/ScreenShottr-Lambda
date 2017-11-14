@@ -12,7 +12,7 @@ Services
 
 ## API Examples
 
-Get Signed S3 URL
+### Get Signed S3 URL
 
 Endpoint `GET /api/getSignedS3URL`
 ```
@@ -25,13 +25,20 @@ Endpoint `GET /api/getSignedS3URL`
 }
 ```
 
-Upload to Signed URL
+### Upload to Signed URL
+Follow AWS S3 documentation for uploading to S3 via a Signed URL.
+Send Binary data to the signed URL using PUT request.
+
 ```
 PUT /SignedURL
 Host signedURLHost
+
+<binary data>
+
+HTTP 200, but blank response.
 ```
 
-Get Image Metadata
+### Get Image Metadata
 
 * Endpoint `GET /api/getImageMetadata?image_id=${key}`
 * `GET /api/getImageMetadata?image_id=0831e045-8aa8-4fd3-a4dd-96c0ab47942c`
