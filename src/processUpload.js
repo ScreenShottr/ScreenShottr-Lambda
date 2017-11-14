@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports.processUpload = (event, context, callback) => {
-  console.log(event)
+  console.log(event.s3)
   const response = {
     statusCode: 200,
     body: JSON.stringify({
