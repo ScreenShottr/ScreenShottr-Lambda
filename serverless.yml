@@ -5,25 +5,27 @@ provider:
   name: aws
   runtime: nodejs6.10
 
-stage: dev
-region: us-east-1
+  stage: dev
+  region: us-east-1
 
 
-plugins:
-  - serverless-offline
-iamRoleStatements:
-  - Effect: "Allow"
-    Action:
-      - "s3:*"
-    Resource: "arn:aws:s3:::screenshottr-service-images-unprocessed-dev*"
-  - Effect: "Allow"
-    Action:
-      - "s3:*"
-    Resource: "arn:aws:s3:::screenshottr-service-images-saved-dev/*"
-  - Effect: "Allow"
-    Action:
-      - "dynamodb:*"
-    Resource: "arn:aws:dynamodb:us-east-1:660773155982:table/screenshottr-service-uploads"
+  plugins:
+    - serverless-offline
+
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "arn:aws:s3:::screenshottr-service-images-unprocessed-dev*"
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: arn:aws:s3:::screenshottr-service-images-saved/*
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource: "arn:aws:dynamodb:us-east-1:660773155982:table/screenshottr-service-uploads"
 
 functions:
   getSignedS3URL:
@@ -34,6 +36,10 @@ functions:
     handler: src/processUpload.processUpload
     events:
       - s3: screenshottr-service-images-unprocessed-dev
+  getMetadata:
+    handler: src/getMetadata.getMetadata
+    events:
+      - http: GET api/getImageMetadata
 
 resources:
  Resources:
