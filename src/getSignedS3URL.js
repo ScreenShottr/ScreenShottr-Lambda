@@ -8,9 +8,10 @@ const s3 = new aws.S3()
 module.exports.getSignedS3URL = (event, context, callback) => {
   var params = {
     Bucket: 'screenshottr-service-images-unprocessed-dev',
-    Key: uuidv4(),
+    Key: uuidv4() + '.png',
     ACL: 'public-read',
-    Expires: 250
+    Expires: 250,
+    ContentType: 'binary/octet-stream'
   }
 
   s3.getSignedUrl('putObject', params, function (error, url) {
@@ -18,7 +19,7 @@ module.exports.getSignedS3URL = (event, context, callback) => {
       const response = {
         statusCode: 500,
         body: JSON.stringify({
-          message: error
+          success: false
         })
       }
      callback(null, response)
