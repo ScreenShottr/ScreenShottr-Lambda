@@ -6,7 +6,7 @@ provider:
   runtime: nodejs6.10
 
   stage: dev
-  region: us-east-1
+  region: eu-west-1
 
 
   plugins:
@@ -25,7 +25,7 @@ provider:
     - Effect: Allow
       Action:
         - dynamodb:*
-      Resource: "arn:aws:dynamodb:us-east-1:660773155982:table/screenshottr-service-uploads"
+      Resource: "arn:aws:dynamodb:eu-west-1:660773155982:table/screenshottr-service-uploads"
 
 functions:
   getSignedS3URL:
