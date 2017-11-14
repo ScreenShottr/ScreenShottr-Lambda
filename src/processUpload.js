@@ -22,6 +22,24 @@ module.exports.processUpload = (event, context, callback) => {
           console.log(err)
           callback(null, {})
         } else {
+          const dynamoParams = {
+            TableName: 'screenshottr-service-uploads',
+            Key: {
+              image_id: event.s3.object.key
+            },
+            UpdateExpression: "set dates.deletedAt = :deletedTime, image_status = :image_status, delete_reason = :delete_reason, deleted = :deleted",
+            ExpressionAttributeValues: {
+              ":deletedTime": Date.now(),
+              ":image_status": 'image_deleted',
+              ":deleted": true,
+              ":delete_reason": 'image_too_large'
+            }
+          }
+          dynamo.update(dynamoParams, function(error, data) {
+            if (error) {
+              console.log(error)
+            }
+          })
           console.log(`Deleted ${event.s3.object.key}`)
         }
       })
@@ -35,7 +53,7 @@ module.exports.processUpload = (event, context, callback) => {
           const image = data.Body
           const fileMeta = fileType(image)
           const fileExtensions = ["png", "jpg", "jpeg", "svg", "gif", "tiff"]
-          if (fileExtensions.indexOf(fileMeta.ext) > -1) {
+          if (fileMeta != null && fileExtensions.indexOf(fileMeta.ext) > -1) {
             filename = `${event.s3.object.key}.${fileMeta.ext}`
             mimeType = fileMeta.mime
             const putParams = {
@@ -81,6 +99,24 @@ module.exports.processUpload = (event, context, callback) => {
               console.log(err)
               callback(null, {})
             } else {
+              const dynamoParams = {
+                TableName: 'screenshottr-service-uploads',
+                Key: {
+                  image_id: event.s3.object.key
+                },
+                UpdateExpression: "set dates.deletedAt = :deletedTime, image_status = :image_status, delete_reason = :delete_reason, deleted = :deleted",
+                ExpressionAttributeValues: {
+                  ":deletedTime": Date.now(),
+                  ":image_status": 'image_deleted',
+                  ":deleted": true,
+                  ":delete_reason": 'file_type_not_allowed'
+                }
+              }
+              dynamo.update(dynamoParams, function(error, data) {
+                if (error) {
+                  console.log(error)
+                }
+              })
               console.log(`Deleted ${event.s3.object.key}`)
             }
           })
