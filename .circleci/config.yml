@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node
+    steps:
+      - checkout
+      - run:
+          name: Install Serverless
+          command: npm install -g serverless
+      - run:
+          name: Serverless Deploy
+          command: serverless deploy
