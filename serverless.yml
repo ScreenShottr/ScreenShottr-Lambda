@@ -13,18 +13,18 @@ plugins:
   - serverless-offline
 
 # you can add statements to the Lambda function's IAM Role here
- iamRoleStatements:
-   - Effect: "Allow"
-     Action:
-       - "s3:putObject"
-       - "s3:getObject"
-       - "s3:DeleteObject"
-       - "s3:ListBucket"
-       - "s3:GetObjectAcl"
-       - "s3:PutObjectAcl"
-       - "s3:PutObjectTagging"
-       - "s3:GetObjectVersionTorrent"
-     Resource: arn:aws:s3:::screenshottr-service-images-unprocessed-dev
+iamRoleStatements:
+ - Effect: "Allow"
+   Action:
+     - "s3:putObject"
+     - "s3:getObject"
+     - "s3:DeleteObject"
+     - "s3:ListBucket"
+     - "s3:GetObjectAcl"
+     - "s3:PutObjectAcl"
+     - "s3:PutObjectTagging"
+     - "s3:GetObjectVersionTorrent"
+   Resource: arn:aws:s3:::screenshottr-service-images-unprocessed-dev
 #    - Effect: "Allow"
 #      Action:
 #        - "s3:PutObject"
