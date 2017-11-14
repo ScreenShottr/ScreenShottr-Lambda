@@ -6,9 +6,11 @@ const aws = require('aws-sdk')
 const s3 = new aws.S3()
 
 module.exports.getSignedS3URL = (event, context, callback) => {
+  const date = new Date
+
   var params = {
     Bucket: 'screenshottr-service-images-unprocessed-dev',
-    Key: uuidv4() + '.png',
+    Key: uuidv4(),
     ACL: 'public-read',
     Expires: 250,
     ContentType: 'binary/octet-stream'
