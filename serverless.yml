@@ -36,7 +36,7 @@ functions:
   uploadFile:
     handler: src/uploadFile.uploadFile
     events:
-      - http: GET api/uploadFile
+      - http: POST api/uploadFile
   processUpload:
     handler: src/processUpload.processUpload
     events:

@@ -9,5 +9,8 @@ jobs:
           name: Install Serverless
           command: npm install -g serverless
       - run:
+          name: Yarn Install
+          command: yarn install
+      - run:
           name: Serverless Deploy
           command: serverless deploy
