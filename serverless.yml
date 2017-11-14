@@ -16,14 +16,7 @@ plugins:
 iamRoleStatements:
  - Effect: "Allow"
    Action:
-     - "s3:putObject"
-     - "s3:getObject"
-     - "s3:DeleteObject"
-     - "s3:ListBucket"
-     - "s3:GetObjectAcl"
-     - "s3:PutObjectAcl"
-     - "s3:PutObjectTagging"
-     - "s3:GetObjectVersionTorrent"
+     - "s3:*"
    Resource: arn:aws:s3:::screenshottr-service-images-unprocessed-dev
 #    - Effect: "Allow"
 #      Action:
