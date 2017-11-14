@@ -771,10 +771,6 @@ file-type@^3.8.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/file-type/-/file-type-3.9.0.tgz#257a078384d1db8087bc449d107d52a52672b9e9"
 
-file-type@^4.1.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/file-type/-/file-type-4.4.0.tgz#1b600e5fca1fbdc6e80c0a70c71c8dba5f7906c5"
-
 file-type@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/file-type/-/file-type-5.2.0.tgz#2ddbea7c73ffe36368dfae49dc338c058c2b8ad6"
@@ -782,6 +778,10 @@ file-type@^5.2.0:
 file-type@^6.1.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/file-type/-/file-type-6.2.0.tgz#e50cd75d356ffed4e306dc4f5bcf52a79903a919"
+
+file-type@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/file-type/-/file-type-7.2.0.tgz#113cfed52e1d6959ab80248906e2f25a8cdccb74"
 
 filename-reserved-regex@^2.0.0:
   version "2.0.0"
@@ -1030,12 +1030,6 @@ iconv-lite@~0.4.13:
 ieee754@^1.1.4:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
-
-image-type@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/image-type/-/image-type-3.0.0.tgz#1502af3135f906e122c877c31e94af7b7a9146c5"
-  dependencies:
-    file-type "^4.1.0"
 
 import-lazy@^2.1.0:
   version "2.1.0"

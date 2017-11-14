@@ -7,10 +7,10 @@ const s3 = new aws.S3()
 
 module.exports.getSignedS3URL = (event, context, callback) => {
   const date = new Date
-
+  const key = uuidv4()
   var params = {
     Bucket: 'screenshottr-service-images-unprocessed-dev',
-    Key: uuidv4(),
+    Key: key,
     ACL: 'public-read',
     Expires: 250,
     ContentType: 'binary/octet-stream'
@@ -32,7 +32,8 @@ module.exports.getSignedS3URL = (event, context, callback) => {
         body: JSON.stringify({
           success: true,
           response: {
-            signedUrl: url
+            signedUrl: url,
+            key: key
           }
         })
       }
