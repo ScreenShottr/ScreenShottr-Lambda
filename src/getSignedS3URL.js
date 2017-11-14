@@ -15,7 +15,7 @@ module.exports.getSignedS3URL = (event, context, callback) => {
         Bucket: 'screenshottr-service-images-unprocessed-dev',
         Key: key,
         ACL: 'public-read',
-        Expires: 120
+        Expires: 250
     };
 
     s3.getSignedUrl('putObject', params, function (err, url) {
