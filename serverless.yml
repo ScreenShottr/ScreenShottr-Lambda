@@ -15,7 +15,7 @@ iamRoleStatements:
  - Effect: "Allow"
    Action:
      - "s3:*"
-   Resource: arn:aws:s3:::screenshottr-service-images-unprocessed-dev
+   Resource: "arn:aws:s3:::screenshottr-service-images-unprocessed-dev*"
 #    - Effect: "Allow"
 #      Action:
 #        - "s3:PutObject"
