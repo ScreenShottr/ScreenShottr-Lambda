@@ -21,8 +21,8 @@ iamRoleStatements:
      - "s3:*"
    Resource: "arn:aws:s3:::screenshottr-service-images-saved-dev/*"
   - Effect: "Allow"
-   Action:
-     - "dynamodb:*"
+    Action:
+      - "dynamodb:*"
   Resource: "arn:aws:dynamodb:us-east-1:660773155982:table/screenshottr-service-uploads"
 
 functions:
