@@ -33,10 +33,6 @@ functions:
     handler: src/getSignedS3URL.getSignedS3URL
     events:
       - http: GET api/getSignedS3URL
-  uploadFile:
-    handler: src/uploadFile.uploadFile
-    events:
-      - http: POST api/uploadFile
   processUpload:
     handler: src/processUpload.processUpload
     events:
