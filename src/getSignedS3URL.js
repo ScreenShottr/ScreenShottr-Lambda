@@ -1,9 +1,7 @@
 'use strict'
-
-const uuidv4 = require('uuid/v4')
-
 console.log('Loading function')
 
+const uuidv4 = require('uuid/v4')
 const aws = require('aws-sdk')
 const s3 = new aws.S3()
 
@@ -19,24 +17,24 @@ module.exports.getSignedS3URL = (event, context, callback) => {
     AL: 'public-read',
       Expires: 250
   }
-
   s3.getSignedUrl('putObject', params, function (err, url) {
     if (error) {
-      response = {
+      const response = {
         statusCode: 500,
         body: JSON.stringify({
-          message: error
+          message: "Error"
         })
       }
-     callback(err)
+     callback({}, response)
     } else {
-      response = {
+      console.log("URL", url)
+      const response = {
         statusCode: 200,
         body: JSON.stringify({
           message: url
         })
       }
-      callback(null, { url })
+      callback(null, response)
     }
   })
 }

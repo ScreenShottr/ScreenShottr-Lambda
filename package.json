@@ -1,6 +1,12 @@
 {
+  "scripts": {
+    "start": "npm run local",
+    "local": "serverless offline",
+    "deploy": "serverless deploy -v"
+  },
   "devDependencies": {
-    "serverless": "^1.24.1"
+    "serverless": "^1.24.1",
+    "serverless-offline": "^3.16.0"
   },
   "dependencies": {
     "uuid": "^3.1.0"
