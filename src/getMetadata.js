@@ -3,17 +3,17 @@ const aws = require('aws-sdk')
 const dynamo = new aws.DynamoDB.DocumentClient()
 
 module.exports.getMetadata = (event, context, callback) => {
-  const image_id = event.queryStringParameters.image_id
+  const imageId = event.queryStringParameters.image_id
   let response = {}
 
   const dynamoParams = {
-    TableName: 'screenshottr-service-uploads',
+    TableName: `screenshottr-service-uploads-${process.env.SS_STAGE}`,
     Key: {
-      'image_id': image_id
+      'image_id': imageId
     }
   }
 
-  dynamo.get(dynamoParams, function(error, data) {
+  dynamo.get(dynamoParams, function (error, data) {
     if (error) {
       response = {
         statusCode: 500,
@@ -35,5 +35,4 @@ module.exports.getMetadata = (event, context, callback) => {
     }
     callback(null, response)
   })
-
 }

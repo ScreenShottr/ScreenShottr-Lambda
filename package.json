@@ -2,16 +2,20 @@
   "scripts": {
     "start": "npm run local",
     "local": "serverless offline",
-    "deploy": "serverless deploy -v"
+    "deploy": "serverless deploy -v",
+    "test": "standard --fix --verbose | snazzy"
   },
   "devDependencies": {
     "serverless": "^1.24.1",
-    "serverless-offline": "^3.16.0"
+    "serverless-offline": "^3.16.0",
+    "standard": "^10.0.3"
   },
   "dependencies": {
     "aws-sdk": "^2.149.0",
+    "bcrypt": "^1.0.3",
     "file-type": "^7.2.0",
     "lodash": "^4.17.4",
+    "snazzy": "^7.0.0",
     "uuid": "^3.1.0"
   }
 }
