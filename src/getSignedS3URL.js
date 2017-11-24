@@ -50,7 +50,7 @@ module.exports.getSignedS3URL = (event, context, callback) => {
       image_owner: imageOwner
     }
   }
-
+  console.log('here')
   dynamo.put(dynamoParams, function (error, data) {
     if (error) {
       console.log(error)

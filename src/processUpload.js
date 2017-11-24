@@ -14,7 +14,7 @@ module.exports.processUpload = (event, context, callback) => {
       Key: event.s3.object.key
     }
 
-    if (event.s3.object.size > 10485760) {
+    if (event.s3.object.size > 26214400) {
       console.log(`Deleting ${event.s3.object.key}`)
       s3.deleteObject(S3Params, (err, data) => {
         if (err) {
@@ -51,7 +51,7 @@ module.exports.processUpload = (event, context, callback) => {
         } else {
           const image = data.Body
           const fileMeta = fileType(image)
-          const fileExtensions = ['png', 'jpg', 'jpeg', 'svg', 'gif', 'tiff']
+          const fileExtensions = ['png', 'jpg', 'jpeg', 'svg', 'gif', 'tiff', 'mp4', 'mov']
           if (fileMeta !== null && typeof fileMeta.ext !== 'undefined' && fileExtensions.indexOf(fileMeta.ext) > -1) {
             filename = `${event.s3.object.key}.${fileMeta.ext}`
             mimeType = fileMeta.mime
