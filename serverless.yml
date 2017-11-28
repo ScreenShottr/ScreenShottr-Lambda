@@ -33,22 +33,22 @@ provider:
 
 functions:
   getSignedS3URL:
-    handler: src/getSignedS3URL.getSignedS3URL
+    handler: src/handler.getSignedS3URL
     events:
       - http: GET api/getSignedS3URL
     memorySize: 128
   processUpload:
-    handler: src/processUpload.processUpload
+    handler: src/handler.processUpload
     events:
       - s3: screenshottr-service-images-unprocessed-dev
         memorySize: 256
   getMetadata:
-    handler: src/getMetadata.getMetadata
+    handler: src/handler.getMetadata
     events:
       - http: GET api/getImageMetadata
     memorySize: 128
   createUser:
-    handler: src/createUser.createUser
+    handler: src/handler.createUser
     events:
       - http: GET api/user/createUser
     memorySize: 128
