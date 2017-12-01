@@ -35,7 +35,7 @@ functions:
   getSignedS3URL:
     handler: src/handler.getSignedS3URL
     events:
-      - http: GET api/getSignedS3URL
+      - http: GET api/image/upload/getSignedS3URL
     memorySize: 128
   processUpload:
     handler: src/handler.processUpload
@@ -45,7 +45,7 @@ functions:
   getMetadata:
     handler: src/handler.getMetadata
     events:
-      - http: GET api/getImageMetadata
+      - http: GET api/image/getImageMetadata
     memorySize: 128
   createUser:
     handler: src/handler.createUser
@@ -55,11 +55,17 @@ functions:
 
 resources:
  Resources:
-    storageBucket:
+    savedBucket:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: screenshottr-service-images-saved-dev
-    entriesDynamo:
+
+    uploadedBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: screenshottr-service-images-uploaded-dev
+
+    uploadsDynamo:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: screenshottr-service-uploads-dev
@@ -70,8 +76,9 @@ resources:
           - AttributeName: image_id
             KeyType: HASH
         ProvisionedThroughput:
-          ReadCapacityUnits: 5
-          WriteCapacityUnits: 5
+          ReadCapacityUnits: 2
+          WriteCapacityUnits: 2
+
     usersDynamo:
       Type: AWS::DynamoDB::Table
       Properties:
@@ -83,5 +90,19 @@ resources:
           - AttributeName: user_name
             KeyType: HASH
         ProvisionedThroughput:
-          ReadCapacityUnits: 5
-          WriteCapacityUnits: 5
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+    userTokensDynamo:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: screenshottr-service-user-tokens-dev
+        AttributeDefinitions:
+          - AttributeName: token
+            AttributeType: S
+        KeySchema:
+          - AttributeName: token
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

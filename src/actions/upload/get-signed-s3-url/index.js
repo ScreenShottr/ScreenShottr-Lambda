@@ -14,4 +14,4 @@ module.exports = (event, context, callback) =>
     })
     respond({statusCode: 200, Success: true, Content: url}, callback)
     resolve()
-})
+  })

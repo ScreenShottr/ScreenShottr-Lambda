@@ -12,4 +12,4 @@ module.exports = ({Bucket, Key, ACL, Expires, ContentType}) =>
       Expires,
       ContentType
     }, handleResponse(resolve, reject))
-})
+  })
