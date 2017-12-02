@@ -22,5 +22,5 @@ module.exports.processUpload = (event, context, callback) => {
 // Image Info
 
 module.exports.getImageMetadata = (event, context, callback) => {
-  getMetadata(event, context, callback)
+  getImageMetadata(event, context, callback)
 }

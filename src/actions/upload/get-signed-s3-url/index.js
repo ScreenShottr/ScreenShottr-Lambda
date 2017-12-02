@@ -1,4 +1,3 @@
-const qs = require('qs')
 const respond = require('../../service/response/generate-response')
 const getSignedURL = require('../../service/s3/getSignedUrl')
 const uuidv4 = require('uuid/v4')
